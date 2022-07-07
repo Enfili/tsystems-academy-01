@@ -17,6 +17,10 @@ public class ArrayCopyDemo {
     private static boolean arraycopy(int[] source, int srcIndex, int[] dest, int destIndex, int length) {
         if (srcIndex + length > source.length || destIndex + length > dest.length)
             return false;
+
+        for (int j = 0; j < length; j++)
+            dest[destIndex + j] = source[srcIndex + j];
+
         return true;
     }
 }
