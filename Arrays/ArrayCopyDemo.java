@@ -5,13 +5,23 @@ public class ArrayCopyDemo {
         char[] copyTo = new char[7];
 
         System.arraycopy(copyFrom, 2, copyTo, 0, 7);
-        System.out.println(new String(copyTo));
+//        System.out.println(new String(copyTo));
 
-        int[] copyFromInt = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
-        int[] copyToInt = new int[7];
-        System.out.println(arraycopy(copyFromInt, 0, copyToInt, 0, 7));
-        System.out.println(arraycopy(copyFromInt, 10, copyToInt, 0, 7));
-        System.out.println(arraycopy(copyFromInt, 0, copyToInt, 5, 7));
+        int[] copyFromInt = new int[1_000_000];
+        int[] copyToInt = new int[1_000_000];
+//        System.out.println(arraycopy(copyFromInt, 0, copyToInt, 5, 7));
+//        System.out.println(arraycopy(copyFromInt, 10, copyToInt, 0, 7));
+//        System.out.println(arraycopy(copyFromInt, 0, copyToInt, 0, 7));
+
+        long startTime = System.currentTimeMillis();
+        arraycopy(copyFromInt, 0, copyToInt, 0, 1_000_000);
+        long endTime = System.currentTimeMillis();
+        System.out.println("My arraycopy: " + (endTime - startTime));
+
+        startTime = System.currentTimeMillis();
+        System.arraycopy(copyFromInt, 0, copyToInt, 0, 1_000_000);
+        endTime = System.currentTimeMillis();
+        System.out.println("System arraycopy: " + (endTime - startTime));
     }
 
     private static boolean arraycopy(int[] source, int srcIndex, int[] dest, int destIndex, int length) {
