@@ -7,6 +7,7 @@ public class ArrayCopyDemo {
         System.arraycopy(copyFrom, 2, copyTo, 0, 7);
         System.out.println(new String(copyTo));
 
+
         int[] copyFromInt = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
         int[] copyToInt = new int[7];
         System.out.println(arraycopy(copyFromInt, 0, copyToInt, 0, 7));
