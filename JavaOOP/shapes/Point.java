@@ -14,7 +14,7 @@ public class Point extends Shape {
         this.y = y;
     }
 
-    public Point(int x, int y, int color) {
+    public Point(int x, int y, char color) {
         super(color);
         this.x = x;
         this.y = y;

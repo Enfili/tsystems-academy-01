@@ -1,18 +1,19 @@
 public class ArrayOfArrays {
     public static void main(String[] args) {
         //int[][] aMatrix = new int[4][];
-        int[][] aMatrix = new int[][]{{2, 3, 7}, {3, 4, 1}};
-        int[][] bMatrix = new int[][]{{1, 1}, {1, 8}, {1, 8}};
+        int[][] aMatrix = new int[][]{{2, 3}, {2, 7}};
+        int[][] bMatrix = new int[][]{{1, 1}, {1, 8}};
 
-        //printMatrix(matrixAddition(aMatrix, bMatrix));
+        printMatrix(matrixAddition(aMatrix, bMatrix));
         //printMatrix(matrixMultiplication(aMatrix, bMatrix));
+        System.out.println();
         printMatrix(aMatrix);
         System.out.println();
-        printMatrix(matrixTransposition(aMatrix));
-        System.out.println();
+        //printMatrix(matrixTransposition(aMatrix));
+        //System.out.println();
         printMatrix(bMatrix);
         System.out.println();
-        printMatrix(matrixTransposition(bMatrix));
+        //printMatrix(matrixTransposition(bMatrix));
 
 
 //        //populate matrix
@@ -32,21 +33,45 @@ public class ArrayOfArrays {
 //        }
     }
 
+    private static boolean isNullMatrix(int[][] m) {
+        if (m == null)
+            return true;
+        for (int j = 0; j < m.length; j++) {
+            if (m[j] == null)
+                return true;
+        }
+        return false;
+    }
+
     private static int[][] matrixAddition(int[][] a, int[][] b) {
-        if (a.length != b.length || a[0].length != b[0].length)
+        if (isNullMatrix(a) || isNullMatrix(b))
+            return null;
+        if (!areSameDimensions(a, b))
             return null;
 
         int[][] m = new int[a.length][a[0].length];
         for (int i = 0; i < a.length; i++) {
-            for (int j = 0; j < a[0].length; j++) {
+            for (int j = 0; j < a[i].length; j++) {
                 m[i][j] = a[i][j] + b[i][j];
             }
         }
         return m;
     }
 
+    private static boolean areSameDimensions(int[][] a, int[][] b) {
+        if (a.length != b.length)
+            return false;
+        for (int j = 0; j < a.length; j++) {
+            if (a[j].length != b[j].length)
+                return false;
+        }
+        return true;
+    }
+
     private static int[][] matrixMultiplication(int[][] a, int[][] b) {
-        if (a.length != b[0].length || a[0].length != b.length)
+        if (isNullMatrix(a) || isNullMatrix(b))
+            return null;
+        if (!areCorrectDimensionsForMultiplication(a, b))
             return null;
 
         int[][] m = new int[b[0].length][a.length];
@@ -61,7 +86,26 @@ public class ArrayOfArrays {
         return m;
     }
 
+    private static boolean areCorrectDimensionsForMultiplication(int[][] a, int[][] b) {
+        for (int[] ints : b) {
+            if (a.length != ints.length)
+                return false;
+        }
+        for (int[] ints : a) {
+            if (b.length != ints.length)
+                return false;
+        }
+        return true;
+    }
+
     private static int[][] matrixTransposition(int[][] a) {
+        if (isNullMatrix(a))
+            return null;
+        for (int[] ints : a) {
+            if (a[0].length != ints.length)
+                return null;
+        }
+
         int[][] m = new int[a[0].length][a.length];
 
         for (int j = 0; j < a[0].length; j++) {
@@ -74,7 +118,7 @@ public class ArrayOfArrays {
     }
 
     private static void printMatrix(int[][] m) {
-        if (m == null) {
+        if (isNullMatrix(m)) {
             System.out.println("null");
             return;
         }
