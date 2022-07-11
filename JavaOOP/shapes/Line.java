@@ -45,4 +45,14 @@ public class Line extends Shape {
 //        }
 //        return "? -> ?"  + super.toString();
     }
+
+    @Override
+    public void print() {
+
+    }
+
+//    @Override
+//    public void print() {
+//        toString();
+//    }
 }

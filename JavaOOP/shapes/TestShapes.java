@@ -1,8 +1,24 @@
 package shapes;
 
+import java.util.Random;
+
 public class TestShapes {
     
     public static void main(String[] args) {
+        Shape[] shapes = {
+                new Square(5),
+                new Rectangle(3, 6),
+                new Triangle('J', 8),
+                new Triangle(3),
+        };
+
+        Random r = new Random();
+        for (Shape shape: shapes) {
+            shape.move(r.nextInt(10), r.nextInt(10));
+            System.out.println(shape);
+        }
+
+
 //        Point point1 = new Point(0,0);
 //        Point point2 = new Point(10,10);
 //        Line line = new Line(point1, point2);

@@ -33,6 +33,11 @@ public class Point extends Shape {
         this.y += dy;
     }
 
+    @Override
+    public void print() {
+
+    }
+
     public String toString() {
         return "["+ x +","+ y +"]" + super.toString();
     }
