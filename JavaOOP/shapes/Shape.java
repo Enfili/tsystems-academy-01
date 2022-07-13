@@ -1,6 +1,6 @@
 package shapes;
 
-public abstract class Shape {
+public abstract class Shape implements Comparable<Shape> {
     protected char color;
     private int x;
     private int y;
@@ -38,4 +38,9 @@ public abstract class Shape {
     };
 
     public abstract void print();
+
+    @Override
+    public int compareTo(Shape o) {
+        return this.color - o.getColor();
+    }
 }

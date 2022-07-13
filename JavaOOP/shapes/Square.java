@@ -22,18 +22,18 @@ public class Square extends Shape{
 
     @Override
     public String toString() {
-        String s = "";
+        StringBuilder sb = new StringBuilder();
 
         int x = getX();
 
         for (int j = 0; j < size; j++) {
             for (int i = 0; i < x; i++)
-                s += " ";
+                sb.append(" ");
             for (int i = 0; i < size; i++)
-                s += super.color;
-            s += "\n";
+                sb.append(super.color).append(" ");
+            sb.append("\n");
         }
-        return s;
+        return sb.toString();
     }
 
     @Override
