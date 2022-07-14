@@ -10,6 +10,9 @@ class HelloHelloWorld {
         int y = 5;
         swap(x, y);
         System.out.println(x + " " + y);
+
+        int z = 6;
+        swap(x, z);
     }
 
     private static void swap(int x, int y) {
