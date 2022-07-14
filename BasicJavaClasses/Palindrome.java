@@ -9,4 +9,6 @@ public class Palindrome {
 		System.out.println(dest.toString());
 		System.out.println(palindrome.equalsIgnoreCase(dest.toString()));
 	}	
+	
+	// palindrome was changed!
 }
