@@ -17,6 +17,4 @@ class HelloHelloWorld {
         x = y;
         y = tmp;
     }
-    // manual conflict-merge
-    // manual conflict-merge
 }
