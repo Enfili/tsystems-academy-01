@@ -1,6 +1,8 @@
 package cars;
 
-public class Car {
+import persons.CompareObject;
+
+public class Car implements CompareObject, Comparable<Car> {
     private String brand;
     private boolean started;
 
@@ -30,8 +32,23 @@ public class Car {
 
     @Override
     public String toString() {
-        return brand + '(' +
+        return brand + " " + (this instanceof PersonalCar ? "personal car " : this instanceof Truck ? "truck " : "") +
+                (this instanceof PersonalCar ? ", number of seats: " + ((PersonalCar) this).getNumberOfSeats() + " " : "") +
+                '(' +
                 (started ? "started" : "stopped") +
                 ')';
+    }
+
+    @Override
+    public int compareTo(CompareObject obj) {
+        if (!(obj instanceof Car))
+            return -1;
+
+        return this.brand.compareTo(((Car) obj).brand);
+    }
+
+    @Override
+    public int compareTo(Car o) {
+        return this.brand.compareTo(o.brand);
     }
 }

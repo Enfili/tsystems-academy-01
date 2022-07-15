@@ -9,7 +9,8 @@ public class TestShapes {
                 new Square(5),
                 new Rectangle(3, 6),
                 new Triangle('J', 8),
-                new Triangle(3),
+                new Circle(11),
+                new Parallelogram(4)
         };
 
         Random r = new Random();
@@ -17,6 +18,16 @@ public class TestShapes {
             shape.move(r.nextInt(10), r.nextInt(10));
             System.out.println(shape);
         }
+
+//        Square sq = new Square(4);
+//        System.out.println(sq);
+
+//        Parallelogram p = new Parallelogram(5);
+//        p.move(4, 0);
+//        System.out.println(p);
+
+//        Circle c = new Circle(3);
+//        System.out.println(c);
 
 
 //        Point point1 = new Point(0,0);

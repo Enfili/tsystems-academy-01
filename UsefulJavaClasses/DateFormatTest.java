@@ -1,6 +1,7 @@
 
 import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
@@ -24,7 +25,8 @@ public class DateFormatTest {
 
         //Converting String to Date
         try {
-            date = df.getDateInstance().parse("3.12.2006");
+            df = new SimpleDateFormat("dd.MM.yyyy");
+            date = df.parse("3.12.2006");
             System.out.println(date);
         } catch (ParseException e) {
             e.printStackTrace();

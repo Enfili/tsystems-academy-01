@@ -1,6 +1,6 @@
 package persons;
 
-public class Person implements CompareObject {
+public class Person implements CompareObject, Comparable<Person> {
     private String firstName;
     private String lastName;
     
@@ -30,5 +30,14 @@ public class Person implements CompareObject {
             return res;
         
         return firstName.compareTo(((Person)obj).firstName);
+    }
+
+    @Override
+    public int compareTo(Person o) {
+        int res = lastName.compareTo(o.lastName);
+        if(res != 0)
+            return res;
+
+        return firstName.compareTo(o.firstName);
     }
 }
