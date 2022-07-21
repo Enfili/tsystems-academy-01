@@ -1,20 +1,58 @@
 package io;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class ListDir {
     public static void main(String[] args) {
-        File dir = new File(".");
+        File dir = new File("C:\\Users\\Student\\IdeaProjects");
+        listDir("C:\\Users\\Student\\IdeaProjects\\Kravy");
+//        if (dir.isDirectory()) {
+//            System.out.println("Listing of: " + dir.getAbsolutePath());
+//
+//            //List directory
+//            for (String fileName : dir.list()) {
+//                System.out.println("  " + fileName);
+//            }
+//        } else {
+//            System.err.printf("File %s is not directory", dir);
+//        }
+    }
 
+    private static void listDir(String path) {
+        System.out.println(path);
+        File dir = new File(path);
         if (dir.isDirectory()) {
-            System.out.println("Listing of: " + dir.getAbsolutePath());
-
-            //List directory
             for (String fileName : dir.list()) {
-                System.out.println("  " + fileName);
+                listDir(path + "\\" + fileName);
             }
-        } else {
-            System.err.printf("File %s is not directory", dir);
         }
+    }
+
+    private static void list(List<File> files) {
+        files.stream().forEach(n -> System.out.println(n.getName()));
+    }
+
+    private static List<File> filter(String path, String name) {
+        List<File> fileLst = new ArrayList<>();
+        File dir = new File(name);
+        filter(dir, fileLst);
+        return fileLst;
+    }
+
+    private static void filter(File f, List<File> filter) {
+        if (podmienka)
+            filter.add(f);
+        if (f.isDirectory()) {
+            for (String fileName : f.list())
+                filter(fileName);
+        }
+    }
+
+    private static List<File> filter(String path, Date minDate) {
+
+        return null;
     }
 }
