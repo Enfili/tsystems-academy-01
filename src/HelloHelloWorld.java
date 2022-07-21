@@ -1,3 +1,5 @@
+import java.util.HashMap;
+
 class HelloHelloWorld {
     public static void main(String[] jahoda) {
         int j = 0;
