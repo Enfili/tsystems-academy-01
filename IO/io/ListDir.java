@@ -35,24 +35,36 @@ public class ListDir {
         files.stream().forEach(n -> System.out.println(n.getName()));
     }
 
-//    private static List<File> filter(String path, String name) {
-//        List<File> fileLst = new ArrayList<>();
-//        File dir = new File(name);
-//        filter(dir, fileLst);
-//        return fileLst;
-//    }
+    private static List<File> filter(String path, String name) {
+        List<File> fileLst = new ArrayList<>();
+        File dir = new File(path);
+        filter(dir, fileLst, name);
+        return fileLst;
+    }
 
-//    private static void filter(File f, List<File> filter) {
-//        if (podmienka)
-//            filter.add(f);
-//        if (f.isDirectory()) {
-//            for (String fileName : f.list())
-//                filter(fileName);
-//        }
-//    }
+    private static void filter(File f, List<File> filtered, String name) {
+        if (f.getName().equals(name))
+            filtered.add(f);
+        if (f.isDirectory()) {
+            for (String fileName : f.list())
+                filter(new File(fileName), filtered, name);
+        }
+    }
 
     private static List<File> filter(String path, Date minDate) {
-
+        List<File> fileLst = new ArrayList<>();
+        File dir = new File(path);
+        filter(dir, fileLst, new Date(2022, 7, 20));
         return null;
     }
+
+    private static void filter(File f, List<File> filtered, Date minDate) {
+        if (f.lastModified() - minDate.getTime() > 0)
+            filtered.add(f);
+        if (f.isDirectory()) {
+            for (String fileName : f.list())
+                filter(new File(fileName), filtered, minDate);
+        }
+    }
+
 }

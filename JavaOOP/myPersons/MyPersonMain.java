@@ -31,7 +31,7 @@ public class MyPersonMain {
                 person.getCar().start();
             System.out.println(person);
         }
-        System.out.println(persons[0] instanceof Comparable<MyPerson>);
+        System.out.println(persons[0] instanceof Comparable);
 
 //        System.out.println(MyPerson.JAHODA);
 //
