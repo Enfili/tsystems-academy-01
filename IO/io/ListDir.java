@@ -28,6 +28,7 @@ public class ListDir {
 
         filter("C:\\Users\\jaros\\eclipse-workspace\\java\\wwww", "aaa").stream()
                 .forEach(n -> System.out.println(n));
+
     }
 
     private static void listDir(String path) {
