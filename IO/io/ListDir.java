@@ -2,6 +2,7 @@ package io;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -19,6 +20,14 @@ public class ListDir {
 //        } else {
 //            System.err.printf("File %s is not directory", dir);
 //        }
+
+//        Calendar cal = Calendar.getInstance();
+//        cal.set(2022, 6, 10);
+//        Date date = cal.getTime();
+//        filter("C:\\Users\\jaros\\eclipse-workspace\\java", date);
+
+        filter("C:\\Users\\jaros\\eclipse-workspace\\java\\wwww", "aaa").stream()
+                .forEach(n -> System.out.println(n));
     }
 
     private static void listDir(String path) {
@@ -43,18 +52,18 @@ public class ListDir {
     }
 
     private static void filter(File f, List<File> filtered, String name) {
-        if (f.getName().equals(name))
+        if (f.getName().startsWith(name))
             filtered.add(f);
         if (f.isDirectory()) {
-            for (String fileName : f.list())
-                filter(new File(fileName), filtered, name);
+            for (File file : f.listFiles())
+                filter(file, filtered, name);
         }
     }
 
     private static List<File> filter(String path, Date minDate) {
         List<File> fileLst = new ArrayList<>();
         File dir = new File(path);
-        filter(dir, fileLst, new Date(2022, 7, 20));
+        filter(dir, fileLst, minDate);
         return null;
     }
 
@@ -62,9 +71,8 @@ public class ListDir {
         if (f.lastModified() - minDate.getTime() > 0)
             filtered.add(f);
         if (f.isDirectory()) {
-            for (String fileName : f.list())
-                filter(new File(fileName), filtered, minDate);
+            for (File file : f.listFiles())
+                filter(file, filtered, minDate);
         }
     }
-
 }
