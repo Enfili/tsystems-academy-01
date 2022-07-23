@@ -3,11 +3,13 @@ package myPersons;
 import cars.Car;
 import persons.CompareObject;
 
-public class MyPerson implements Comparable<MyPerson> {
+import java.io.*;
+
+public class MyPerson implements Comparable<MyPerson>, Serializable {
     public static final String JAHODA = "jahoda";
 
     private String name;
-    private int age;
+    private transient int age;
     private Car car;
 
     public MyPerson(String name) {
@@ -48,6 +50,16 @@ public class MyPerson implements Comparable<MyPerson> {
 
     private boolean isValidAge(int age) {
         return 0 <= age && age <= 150;
+    }
+
+    public void save() throws IOException {
+        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("person.txt"));
+        oos.writeObject(this);
+    }
+
+    public static void load() throws IOException, ClassNotFoundException {
+        ObjectInputStream ois = new ObjectInputStream(new FileInputStream("person.txt"));
+        System.out.println((MyPerson) ois.readObject());
     }
 
     @Override

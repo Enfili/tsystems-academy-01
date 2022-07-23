@@ -44,6 +44,7 @@ public class ListDir {
         files.stream().forEach(n -> System.out.println(n.getName()));
     }
 
+    // NAME FILTERS
     private static List<File> filter(String path, String name) {
         List<File> fileLst = new ArrayList<>();
         File dir = new File(path);
@@ -60,6 +61,7 @@ public class ListDir {
         }
     }
 
+    // DATE FILTERS
     private static List<File> filter(String path, Date minDate) {
         List<File> fileLst = new ArrayList<>();
         File dir = new File(path);
